@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/app_bar_main">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Your layout components go here -->
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <!-- Main Content Layout -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="0dp"
+            tools:context=".MainActivity">
+
+            <!-- Card 1 -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="400dp"
+                    android:layout_height="wrap_content"
+                    android:padding="1dp">
+
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="90dp"
+                        android:layout_height="116dp"
+                        android:layout_marginTop="10dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/railway_logo" />
+
+                    <Button
+                        android:id="@+id/map"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="104dp"
+                        android:layout_marginTop="68dp"
+                        android:backgroundTint="#1E2B37"
+                        android:text="Station Map"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:rippleColor="#FFFFFF" />
+
+                    <Button
+                        android:id="@+id/directory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="252dp"
+                        android:layout_marginTop="68dp"
+                        android:backgroundTint="#1E2B37"
+                        android:text="Directory"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/train_station_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="100dp"
+                        android:layout_marginTop="32dp"
+                        android:text="Agra Railway Station"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.502"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Buttons for Connectivity and Nearby Hotels -->
+
+            <Button
+                android:id="@+id/connectivity"
+                android:layout_width="160dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:text="Connectivity"
+                app:layout_constraintEnd_toStartOf="@+id/nearby_hotels"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card_1"
+                app:layout_constraintWidth_percent="0.5" />
+
+            <Button
+                android:id="@+id/nearby_hotels"
+                android:layout_width="160dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="Nearby Hotels"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/connectivity"
+                app:layout_constraintTop_toBottomOf="@+id/card_1"
+                app:layout_constraintWidth_percent="0.5" />
+
+            <!-- Card 2 -->
+
+            <!-- Additional Buttons (Emergency, Wheel Chair, Voice Guided Navigation) -->
+
+            <!-- Footer with 3 Image Icons -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/footer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <ImageView
+                    android:id="@+id/image1"
+                    android:layout_width="69dp"
+                    android:layout_height="69dp"
+                    android:layout_marginTop="370dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/home1"
+                    app:layout_constraintEnd_toStartOf="@+id/image2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.33" />
+
+                <ImageView
+                    android:id="@+id/image2"
+                    android:layout_width="69dp"
+                    android:layout_height="69dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="370dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/map1"
+                    app:layout_constraintEnd_toStartOf="@+id/image3"
+                    app:layout_constraintStart_toEndOf="@+id/image1"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.33" />
+
+                <ImageView
+                    android:id="@+id/image3"
+                    android:layout_width="69dp"
+                    android:layout_height="69dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="370dp"
+                    android:src="@drawable/wallet1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/image2"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.33" />
+
+                <Button
+                    android:id="@+id/wheel_chair"
+                    android:layout_width="120dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="250dp"
+                    android:text="Wheel Chair"
+                    app:layout_constraintEnd_toStartOf="@+id/voice_guided_navigation"
+                    app:layout_constraintStart_toEndOf="@+id/emergency"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.33" />
+
+                <Button
+                    android:id="@+id/emergency"
+                    android:layout_width="120dp"
+                    android:layout_height="80dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="250dp"
+                    android:text="Emergency"
+                    android:textSize="12dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.33" />
+
+                <Button
+                    android:id="@+id/voice_guided_navigation"
+                    android:layout_width="120dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="250dp"
+                    android:layout_marginEnd="5dp"
+                    android:text="Voice Guided Navigation"
+                    android:textSize="12dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.33" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:padding="10dp"
+                    app:layout_constraintBottom_toTopOf="@+id/wheel_chair"
+                    tools:layout_editor_absoluteX="-4dp">
+
+                    <TextView
+                        android:id="@+id/train_enquiry_center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Train Enquiry Center"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/live_train_status"
+                        android:layout_width="160dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="16dp"
+                        android:backgroundTint="#1A8CCA"
+                        android:text="Live Train Status"
+                        app:layout_constraintEnd_toStartOf="@id/pnr_status"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/train_enquiry_center"
+                        app:layout_constraintWidth_percent="0.5" />
+
+                    <Button
+                        android:id="@+id/pnr_status"
+                        android:layout_width="160dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="16dp"
+                        android:backgroundTint="#1A8CCA"
+                        android:text="PNR Status"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/live_train_status"
+                        app:layout_constraintTop_toBottomOf="@id/train_enquiry_center"
+                        app:layout_constraintWidth_percent="0.5" />
+
+                    <Button
+                        android:id="@+id/food"
+                        android:layout_width="110dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="128dp"
+                        android:backgroundTint="#1E2B37"
+                        android:text="Food"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.498"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.5" />
+
+                    <Button
+                        android:id="@+id/train_between_station"
+                        android:layout_width="115dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="128dp"
+                        android:layout_marginEnd="6dp"
+                        android:backgroundTint="#1E2B37"
+                        android:text="Train Between Station"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.25" />
+
+                    <Button
+                        android:id="@+id/time_table"
+                        android:layout_width="117dp"
+                        android:layout_height="100dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="128dp"
+                        android:backgroundTint="#1E2B37"
+                        android:text="Time Table"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.25" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <fragment
+        android:id="@+id/nav_host_fragment_content_main"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/mobile_navigation" />
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
