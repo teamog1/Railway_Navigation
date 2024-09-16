@@ -10,4 +10,7 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="Wheelchair">Wheelchair\n</string>
+    <string name="Contact_Railway">Contact_Railway\n</string>
+    <string name="random_shit">Login\n</string>
 </resources>

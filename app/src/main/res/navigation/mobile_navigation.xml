@@ -22,4 +22,22 @@
         android:name="com.example.smartnav.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.example.smartnav.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_threedmap"
+        android:name="com.example.smartnav.ui.ThreeDMap.ThreeDMapFragment"
+        android:label="3D Map"
+        tools:layout="@layout/fragment_threedmap" />
+
+    <fragment
+        android:id="@+id/nav_ticket"
+        android:name="com.example.smartnav.ui.Ticket.TicketFragment"
+        android:label="Ticket"
+        tools:layout="@layout/fragment_ticket" />
+
 </navigation>

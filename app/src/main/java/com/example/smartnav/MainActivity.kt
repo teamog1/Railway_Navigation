@@ -14,56 +14,109 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.example.smartnav.databinding.ActivityMainBinding
+import android.net.Uri
+import android.view.MenuItem
+import androidx.core.view.GravityCompat
+import com.google.firebase.auth.FirebaseAuth
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
-
-
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_main_login)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.appBarMain.toolbar)
+        auth = FirebaseAuth.getInstance()
 
-//        binding.appBarMain.fab.setOnClickListener { view ->
-//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                .setAction("Action", null)
-//                .setAnchorView(R.id.fab).show()
-//        }
+        val currentUser = auth.currentUser
+        if (currentUser == null) {
+            // If no user is logged in, start the Login activity
+            val loginIntent = Intent(this, Login::class.java)
+            startActivity(loginIntent)
+            finish()
+        } else {
+            setSupportActionBar(binding.appBarMain.toolbar)
+        }
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+
+        // Set up navigation
         appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
-            ), drawerLayout
+            setOf(R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        val mapButton: Button = findViewById(R.id.map)
+        // Set the navigation item selected listener
+        navView.setNavigationItemSelectedListener(this)
 
-        // Set an OnClickListener to handle the button click
+        // Handle button clicks
+        val mapButton: Button = findViewById(R.id.map)
         mapButton.setOnClickListener {
-            // Create an Intent to launch WebViewActivity
             val intent = Intent(this, WebViewActivity::class.java)
+            startActivity(intent)
+        }
+
+        val emergencyButton: Button = findViewById(R.id.emergency)
+        emergencyButton.setOnClickListener {
+            val intent = Intent(this, EmergencyActivity::class.java)
+            startActivity(intent)
+        }
+
+        val scheduleButton: Button = findViewById(R.id.schedule_button)
+        scheduleButton.setOnClickListener {
+            val intent = Intent(this, ScheduleActivity::class.java)
+            startActivity(intent)
+        }
+
+        val voiceButton: Button = findViewById(R.id.wheel_chair)
+        voiceButton.setOnClickListener {
+            val intent = Intent(this, VoiceActivity::class.java)
             startActivity(intent)
         }
     }
 
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.nav_signout -> {
+                FirebaseAuth.getInstance().signOut()
 
+                val intent = Intent(this@MainActivity, Login::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
+
+                finish()
+
+                return true
+            }
+            R.id.nav_contact -> {
+                val intent = Intent(Intent.ACTION_DIAL).apply {
+                    data = Uri.parse("tel:139")
+                }
+                startActivity(intent)
+            }
+
+            R.id.nav_threedmap -> {
+                // Launch the 3DMapActivity with WebView
+                val intent = Intent(this, WebViewActivityB::class.java)
+                startActivity(intent)
+            }
+        }
+
+        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+        drawerLayout.closeDrawer(GravityCompat.START)
+        return true
+    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
+        // Inflate the menu; this adds items to the action bar if present
         menuInflater.inflate(R.menu.main, menu)
         return true
     }
@@ -72,6 +125,6 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
-
-
 }
+
+
